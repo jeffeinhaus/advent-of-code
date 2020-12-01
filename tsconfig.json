@@ -9,7 +9,9 @@
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "outDir": "dist",
-    "paths": {},
+    "paths": {
+      "@utils/*":["utils/*"]
+    },
     "strictNullChecks": true,
     "target": "ES2020"
   },
