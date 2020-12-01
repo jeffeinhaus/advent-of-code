@@ -1,0 +1,9 @@
+# Packages
+node_modules
+
+# Distributables
+dist
+coverage
+
+# Editors
+.vscode
