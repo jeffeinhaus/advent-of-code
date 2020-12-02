@@ -8,10 +8,11 @@ describe('Report Repair', () => {
     input = fileToNumArray(__dirname, 'puzzle_input.txt');
   });
 
+  const testInput = [1721, 979, 366, 299, 675, 1456];
+
   describe(reportRepairDouble, () => {
     it('finds the two numbers that sum to 2020 and multiplies them', () => {
-      console.log(__dirname);
-      const result = reportRepairDouble([1721, 979, 366, 299, 675, 1456]);
+      const result = reportRepairDouble(testInput);
       expect(result).toEqual(1721*299);
     });
   
@@ -24,7 +25,7 @@ describe('Report Repair', () => {
 
   describe(reportRepairTriple, () => {
     it('finds the three numbers that sum to 2020 and multiplies them', () => {
-      const result = reportRepairTriple([1721, 979, 366, 299, 675, 1456]);
+      const result = reportRepairTriple(testInput);
       expect(result).toEqual(979*366*675);
     });
   
