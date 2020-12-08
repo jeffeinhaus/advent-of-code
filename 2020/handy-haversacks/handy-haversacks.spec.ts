@@ -1,4 +1,4 @@
-import { handyHaversacks } from './handy-haversacks';
+import { findBagsThatCanContainShinyGold, findBagsContainedByShinyGold } from './handy-haversacks';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Handy Haversacks', () => {
@@ -20,14 +20,37 @@ describe('Handy Haversacks', () => {
     'dotted black bags contain no other bags.',
   ];
 
-  describe(handyHaversacks, () => {
+  const testInput2 = [
+    'shiny gold bags contain 2 dark red bags.',
+    'dark red bags contain 2 dark orange bags.',
+    'dark orange bags contain 2 dark yellow bags.',
+    'dark yellow bags contain 2 dark green bags.',
+    'dark green bags contain 2 dark blue bags.',
+    'dark blue bags contain 2 dark violet bags.',
+    'dark violet bags contain no other bags.',
+  ]
+
+  describe(findBagsThatCanContainShinyGold, () => {
     it('finds the number of bags that can contain a shiny gold bag', () => {
-      const result = handyHaversacks(testInput);
+      const result = findBagsThatCanContainShinyGold(testInput);
       expect(result).toEqual(4);
     });
   
-    it.only('finds the answer for the puzzle input', () => {
-      const result = handyHaversacks(input);
+    it('finds the answer for the puzzle input', () => {
+      const result = findBagsThatCanContainShinyGold(input);
+      console.log(result);
+      expect(result).not.toEqual(0);
+    });
+  });
+
+  describe(findBagsContainedByShinyGold, () => {
+    it('finds the number of bags contained inside a shiny gold bag', () => {
+      expect(findBagsContainedByShinyGold(testInput)).toEqual(32);
+      expect(findBagsContainedByShinyGold(testInput2)).toEqual(126);
+    });
+  
+    it('finds the answer for the puzzle input', () => {
+      const result = findBagsContainedByShinyGold(input);
       console.log(result);
       expect(result).not.toEqual(0);
     });
