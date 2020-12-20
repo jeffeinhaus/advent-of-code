@@ -18,3 +18,23 @@ export const findBus = (busInformation: string[]): number => {
 
   return busId * minTime;
 }
+
+export const findMagicBus = (busIds: string): number => {
+  const ids = busIds.split(',');
+  const max = Math.max(...ids.filter((id) => id != 'x').map((id) => Number(id)));
+  const maxIndex = ids.indexOf(max.toString());
+  let magicTime = max;
+  while(!foundMagicBus(ids, magicTime - maxIndex)) {
+    magicTime += max;
+  }
+  return magicTime - maxIndex;
+}
+
+const foundMagicBus = (busIds: string[], time: number): boolean => {
+  for (let i = 0; i < busIds.length; i++) {
+    if (busIds[i] != 'x' && (time + i) % Number(busIds[i]) != 0) {
+      return false;
+    }
+  }
+  return true;
+}

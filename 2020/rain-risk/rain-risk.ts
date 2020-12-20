@@ -17,7 +17,6 @@ export const calculateManhattanDistance = (directions: string[]): number => {
       } else {
         currentDirection = 360 - Math.abs(currentDirection - value);
       }
-      console.log([direction, currentDirection]);
     } else if (direction.charAt(0) === 'R') {
       if (currentDirection + value <= 270) {
         currentDirection += value;
