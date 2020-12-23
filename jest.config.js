@@ -2,25 +2,21 @@
 const { compilerOptions } = require('./tsconfig.json');
 const { pathsToModuleNameMapper } = require('ts-jest/utils');
 
-const createConfig = (
-  directory,
-) => ({
+const createConfig = (directory) => ({
   clearMocks: true,
   coverageDirectory: `coverage/${directory}`,
   moduleNameMapper: {
-    ...pathsToModuleNameMapper(
-      compilerOptions.paths,
-      { prefix: '<rootDir>/' },
-    ),
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   },
   preset: 'ts-jest',
-  roots: [ `<rootDir>/${directory}` ],
+  roots: [`<rootDir>/${directory}`],
   testEnvironment: 'node',
 });
 
+const twentyFifteen = createConfig('2015/');
 const twentyTwenty = createConfig('2020/');
 
 module.exports = {
   collectCoverage: true,
-  projects: [ twentyTwenty ],
+  projects: [twentyFifteen, twentyTwenty],
 };
