@@ -4,7 +4,7 @@ export const findFirstInvalidNumber = (data: number[], preambleLength: number): 
       return data[i];
     }
   }
-  
+
   return 0;
 };
 
@@ -23,7 +23,7 @@ export const findEncryptionWeakness = (data: number[], preambleLength: number): 
     sum = 0;
   }
   return 0;
-}
+};
 
 const findSum = (data: number[], target: number): boolean => {
   for (let i = 0; i < data.length; i++) {
@@ -33,6 +33,6 @@ const findSum = (data: number[], target: number): boolean => {
       }
     }
   }
-  
+
   return false;
 };

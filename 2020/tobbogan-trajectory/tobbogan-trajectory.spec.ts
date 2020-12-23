@@ -1,8 +1,7 @@
-import { tobboganTrajectory } from './tobbogan-trajectory';
 import { fileToStringArray } from '@utils/file-reader';
+import { tobboganTrajectory } from './tobbogan-trajectory';
 
 describe('Tobbogan Trajectory', () => {
-
   let input: string[] = [];
   beforeAll(() => {
     input = fileToStringArray(__dirname, 'puzzle_input.txt');
@@ -27,7 +26,7 @@ describe('Tobbogan Trajectory', () => {
       const result = tobboganTrajectory(testInput, 3, 1);
       expect(result).toEqual(7);
     });
-  
+
     it('finds the answer for the part 1 puzzle input', () => {
       const result = tobboganTrajectory(input, 3, 1);
       console.log(result);
@@ -63,4 +62,4 @@ describe('Tobbogan Trajectory', () => {
       expect(result).not.toEqual(0);
     });
   });
-})
+});

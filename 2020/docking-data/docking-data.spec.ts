@@ -1,16 +1,13 @@
-import { sumFloatingMemoryValues, sumMemoryValues } from './docking-data'
+import { sumFloatingMemoryValues, sumMemoryValues } from './docking-data';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Docking Data', () => {
-  
   let input: string[] = [];
   beforeAll(() => {
     input = fileToStringArray(__dirname, 'puzzle_input.txt');
   });
 
-  
   describe(sumMemoryValues, () => {
-    
     it('finds the sum of the non-zero values left in memory after applying the mask', () => {
       const testInput = [
         'mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X',
@@ -20,7 +17,7 @@ describe('Docking Data', () => {
       ];
       expect(sumMemoryValues(testInput)).toEqual(165);
     });
-  
+
     it('finds the answer for the puzzle input', () => {
       const result = sumMemoryValues(input);
       console.log(result);
@@ -35,7 +32,7 @@ describe('Docking Data', () => {
         'mem[42] = 100',
         'mask = 00000000000000000000000000000000X0XX',
         'mem[26] = 1',
-      ]
+      ];
       expect(sumFloatingMemoryValues(testInput)).toEqual(208);
     });
 
@@ -44,6 +41,5 @@ describe('Docking Data', () => {
       console.log(result);
       expect(result).not.toEqual(0);
     });
-  })
-
+  });
 });

@@ -1,8 +1,7 @@
-import { computeSeatId, maxSeatId, findMySeat } from './binary-boarding'
+import { computeSeatId, findMySeat, maxSeatId } from './binary-boarding';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Binary Boarding', () => {
-  
   let input: string[] = [];
   beforeAll(() => {
     input = fileToStringArray(__dirname, 'puzzle_input.txt');

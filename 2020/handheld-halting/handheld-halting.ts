@@ -1,8 +1,8 @@
 export const detectInfiniteLoop = (instructions: string[]): [number, boolean] => {
   let acc = 0;
   let instructionIndex = 0;
-  let foundInstructions: boolean[] = new Array(instructions.length).fill(false);
-  while(!foundInstructions[instructionIndex] && instructionIndex < instructions.length) {
+  const foundInstructions: boolean[] = new Array(instructions.length).fill(false);
+  while (!foundInstructions[instructionIndex] && instructionIndex < instructions.length) {
     foundInstructions[instructionIndex] = true;
     const [instruction, operation] = instructions[instructionIndex].split(' ');
     const value = Number(operation.substring(1));
@@ -21,7 +21,7 @@ export const detectInfiniteLoop = (instructions: string[]): [number, boolean] =>
 };
 
 export const fixBadInstruction = (instructions: string[]): number => {
-  for(const instruction in instructions) {
+  for (const instruction in instructions) {
     const alteredInstructions = [...instructions];
     const foundInstruction = instructions[instruction].split(' ');
     if (foundInstruction[0] === 'jmp') {
@@ -38,4 +38,4 @@ export const fixBadInstruction = (instructions: string[]): number => {
   }
 
   return 0;
-}
+};

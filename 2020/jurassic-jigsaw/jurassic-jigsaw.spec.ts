@@ -1,4 +1,11 @@
-import { Tile, convertToTileArray, findCornerTiles, flipVertical, flipHorizontal, rotate } from './jurassic-jigsaw';
+import {
+  Tile,
+  convertToTileArray,
+  findCornerTiles,
+  flipHorizontal,
+  flipVertical,
+  rotate,
+} from './jurassic-jigsaw';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Jurassic Jigsaw', () => {
@@ -10,17 +17,17 @@ describe('Jurassic Jigsaw', () => {
   });
 
   describe(findCornerTiles, () => {
-    it('multiplies the ids of all the corner tiles after rearranging', () => {
+    it.only('multiplies the ids of all the corner tiles after rearranging', () => {
       const tiles = convertToTileArray(exampleInput);
       expect(findCornerTiles(tiles)).toEqual(20899048083289);
     });
 
-    it.only('finds the answer to the puzzle input', () => {
+    it('finds the answer to the puzzle input', () => {
       const tiles = convertToTileArray(puzzleInput);
       expect(findCornerTiles(tiles)).toEqual(108603771107737);
     });
   });
-  
+
   describe(convertToTileArray, () => {
     let result: Tile[];
     beforeEach(() => {
@@ -148,7 +155,7 @@ describe('Jurassic Jigsaw', () => {
         '..#.......',
         '..#.###...',
       ]);
-    })
+    });
   });
 
   describe('Match tiles', () => {
@@ -168,7 +175,7 @@ describe('Jurassic Jigsaw', () => {
 
     describe('Match Right', () => {
       it('returns true if the tile lines up to the right', () => {
-        let flippedTile = new Tile(0, flipVertical(tiles[0].tile));
+        const flippedTile = new Tile(0, flipVertical(tiles[0].tile));
         expect(flippedTile.matchesRight(tiles[8])).toEqual(true);
       });
       it('returns false if the tile does not line up to the right', () => {
@@ -178,8 +185,8 @@ describe('Jurassic Jigsaw', () => {
 
     describe('Match Top', () => {
       it('returns true if the tile lines up to the top', () => {
-        let flippedTile3 = new Tile(0, flipVertical(tiles[3].tile));
-        let flippedTile0 = new Tile(0, flipVertical(tiles[0].tile));
+        const flippedTile3 = new Tile(0, flipVertical(tiles[3].tile));
+        const flippedTile0 = new Tile(0, flipVertical(tiles[0].tile));
         expect(flippedTile3.matchesTop(flippedTile0)).toEqual(true);
       });
       it('returns false if the tile does not line up to the top', () => {
@@ -189,8 +196,8 @@ describe('Jurassic Jigsaw', () => {
 
     describe('Match Bottom', () => {
       it('returns true if the tile lines up to the bottom', () => {
-        let flippedTile3 = new Tile(0, flipVertical(tiles[3].tile));
-        let flippedTile0 = new Tile(0, flipVertical(tiles[0].tile));
+        const flippedTile3 = new Tile(0, flipVertical(tiles[3].tile));
+        const flippedTile0 = new Tile(0, flipVertical(tiles[0].tile));
         expect(flippedTile0.matchesBottom(flippedTile3)).toEqual(true);
       });
       it('returns false if the tile does not line up to the bottom', () => {
@@ -216,7 +223,7 @@ describe('Jurassic Jigsaw', () => {
         '.#...#....',
         '#.#.##....',
         '##.###.#.#',
-        '#..##.#...'
+        '#..##.#...',
       ]);
     });
   });

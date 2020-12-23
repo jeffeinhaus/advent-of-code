@@ -6,7 +6,7 @@ export const reportRepairDouble = (expenses: number[]): number => {
       }
     }
   }
-   
+
   return 0;
 };
 
@@ -20,7 +20,6 @@ export const reportRepairTriple = (expenses: number[]): number => {
       }
     }
   }
-   
+
   return 0;
 };
-

@@ -1,8 +1,8 @@
 export const convertToTileArray = (tileInformation: string[]): Tile[] => {
   const tiles: Tile[] = [];
-  let id: number = 0;
+  let id = 0;
   let tile: string[] = [];
-  tileInformation.forEach((info) => {  
+  tileInformation.forEach((info) => {
     if (info.startsWith('Tile')) {
       id = Number(info.match(/\d+/)![0]);
     } else if (info) {
@@ -12,9 +12,9 @@ export const convertToTileArray = (tileInformation: string[]): Tile[] => {
       tile = [];
     }
   });
-  
+
   return tiles;
-}
+};
 
 export const findCornerTiles = (tiles: Tile[]): number => {
   for (let i = 0; i < tiles.length; i++) {
@@ -45,7 +45,7 @@ export const findCornerTiles = (tiles: Tile[]): number => {
         flipHorizontal(tiles[j].tile),
         rotate(flipHorizontal(tiles[j].tile)),
         rotate(rotate(flipHorizontal(tiles[j].tile))),
-        rotate(rotate(rotate(flipHorizontal(tiles[j].tile)))),   
+        rotate(rotate(rotate(flipHorizontal(tiles[j].tile)))),
       ];
 
       possibleIConfigurations.forEach((iConfig) => {
@@ -73,13 +73,13 @@ export const findCornerTiles = (tiles: Tile[]): number => {
   const corners: number[] = [];
   tiles.forEach((tile) => {
     if (isCorner(tile)) {
-        corners.push(tile.id);
-        console.log([tile.id, tile.tileMap]);
-      }
+      corners.push(tile.id);
+      console.log([tile.id, tile.tileMap]);
+    }
   });
 
   return corners.reduce((a, b) => a * b);
-}
+};
 
 const isCorner = (tile: Tile): boolean => {
   const uniqueTiles = new Set([
@@ -89,10 +89,10 @@ const isCorner = (tile: Tile): boolean => {
     ...tile.tileMap.top,
   ]);
   return uniqueTiles.size <= 2;
-}
+};
 
 export const rotate = (tile: string[]): string[] => {
-  let rotatedTile: string[] = [];
+  const rotatedTile: string[] = [];
   for (let i = 0; i < tile[0].length; i++) {
     let tileRow = '';
     for (let j = tile.length - 1; j >= 0; j--) {
@@ -104,7 +104,7 @@ export const rotate = (tile: string[]): string[] => {
 };
 
 export const flipVertical = (tile: string[]): string[] => {
-  let flippedTile: string[] = [];
+  const flippedTile: string[] = [];
   for (let i = tile.length - 1; i >= 0; i--) {
     flippedTile.push(tile[i]);
   }
@@ -113,7 +113,7 @@ export const flipVertical = (tile: string[]): string[] => {
 };
 
 export const flipHorizontal = (tile: string[]): string[] => {
-  let flippedTile: string[] = [];
+  const flippedTile: string[] = [];
   for (let i = 0; i < tile.length; i++) {
     flippedTile.push(tile[i].split('').reverse().join(''));
   }
@@ -123,18 +123,17 @@ export const flipHorizontal = (tile: string[]): string[] => {
 
 export class Tile {
   id: number;
-  tile: string[];
-  tileMap: {
-    left: Set<number>,
-    right: Set<number>,
-    top: Set<number>,
-    bottom: Set<number>,
-  }
 
-  constructor (
-    id: number,
-    tile: string[],
-  ) {
+  tile: string[];
+
+  tileMap: {
+    left: Set<number>;
+    right: Set<number>;
+    top: Set<number>;
+    bottom: Set<number>;
+  };
+
+  constructor (id: number, tile: string[]) {
     this.id = id;
     this.tile = tile;
     this.tileMap = {
@@ -142,50 +141,50 @@ export class Tile {
       right: new Set(),
       top: new Set(),
       bottom: new Set(),
-    }
+    };
   }
 
   matchesLeft = (toCheck: Tile): boolean => {
     const currentTile = this.tile;
     const toCheckTile = toCheck.tile;
     for (let i = 0; i < currentTile.length; i++) {
-      if (currentTile[i].charAt(0) != toCheckTile[i].charAt(toCheckTile[i].length - 1)) {
+      if (currentTile[i].charAt(0) !== toCheckTile[i].charAt(toCheckTile[i].length - 1)) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   matchesRight = (toCheck: Tile): boolean => {
     const currentTile = this.tile;
     const toCheckTile = toCheck.tile;
     for (let i = 0; i < currentTile.length; i++) {
-      if (currentTile[i].charAt(currentTile[i].length - 1) != toCheckTile[i].charAt(0)) {
+      if (currentTile[i].charAt(currentTile[i].length - 1) !== toCheckTile[i].charAt(0)) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   matchesTop = (toCheck: Tile): boolean => {
     const currentTile = this.tile;
     const toCheckTile = toCheck.tile;
     for (let i = 0; i < currentTile[0].length; i++) {
-      if (currentTile[0].charAt(i) != toCheckTile[toCheckTile.length - 1].charAt(i)) {
+      if (currentTile[0].charAt(i) !== toCheckTile[toCheckTile.length - 1].charAt(i)) {
         return false;
       }
     }
     return true;
-  }
+  };
 
   matchesBottom = (toCheck: Tile): boolean => {
     const currentTile = this.tile;
     const toCheckTile = toCheck.tile;
     for (let i = 0; i < currentTile[currentTile.length - 1].length; i++) {
-      if (currentTile[currentTile.length - 1].charAt(i) != toCheckTile[0].charAt(i)) {
+      if (currentTile[currentTile.length - 1].charAt(i) !== toCheckTile[0].charAt(i)) {
         return false;
       }
     }
     return true;
-  }
+  };
 }

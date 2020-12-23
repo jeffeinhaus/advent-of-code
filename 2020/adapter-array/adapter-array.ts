@@ -25,24 +25,22 @@ export const findAllPossibleArrays = (joltages: number[]): number => {
   let i = 0;
   while (i < sortedJoltages.length) {
     if (isContiguousRange(sortedJoltages.slice(i, i + 4), 3)) {
-        possibleCombinations *= 2;
-        i += 3;
+      possibleCombinations *= 2;
+      i += 3;
     } else if (isContiguousRange(sortedJoltages.slice(i, i + 5), 4)) {
-        possibleCombinations *= 4;
-        i += 4;
+      possibleCombinations *= 4;
+      i += 4;
     } else if (isContiguousRange(sortedJoltages.slice(i, i + 6), 5)) {
-        possibleCombinations *= 7;
-        i += 5;
+      possibleCombinations *= 7;
+      i += 5;
     } else {
       i++;
     }
   }
 
   return possibleCombinations;
-}
+};
 
-const isContiguousRange = (joltages: number[], rangeLength: number): boolean => {
-  return (joltages[0] + rangeLength - 1 === joltages[rangeLength - 1]
-    && joltages[0] + rangeLength != joltages[rangeLength]);
-}
-
+const isContiguousRange = (joltages: number[], rangeLength: number): boolean =>
+  joltages[0] + rangeLength - 1 === joltages[rangeLength - 1] &&
+  joltages[0] + rangeLength !== joltages[rangeLength];

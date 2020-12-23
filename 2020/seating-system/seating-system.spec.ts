@@ -1,27 +1,23 @@
-import { 
-  findOccupiedSeatsAtEquilibrium,
-  findAdjacentOccupiedSeatsStrict,
-} from './seating-system';
+import { findAdjacentOccupiedSeatsStrict, findOccupiedSeatsAtEquilibrium } from './seating-system';
 import { fileTo2DArray } from '@utils/file-reader';
 
 describe('Seating System', () => {
-
   let input: string[][] = [];
   beforeAll(() => {
     input = fileTo2DArray(__dirname, 'puzzle_input.txt');
   });
 
   const testInput = [
-    ['L','.','L','L','.','L','L','.','L','L'],
-    ['L','L','L','L','L','L','L','.','L','L'],
-    ['L','.','L','.','L','.','.','L','.','.'],
-    ['L','L','L','L','.','L','L','.','L','L'],
-    ['L','.','L','L','.','L','L','.','L','L'],
-    ['L','.','L','L','L','L','L','.','L','L'],
-    ['.','.','L','.','L','.','.','.','.','.'],
-    ['L','L','L','L','L','L','L','L','L','L'],
-    ['L','.','L','L','L','L','L','L','.','L'],
-    ['L','.','L','L','L','L','L','.','L','L'],
+    ['L', '.', 'L', 'L', '.', 'L', 'L', '.', 'L', 'L'],
+    ['L', 'L', 'L', 'L', 'L', 'L', 'L', '.', 'L', 'L'],
+    ['L', '.', 'L', '.', 'L', '.', '.', 'L', '.', '.'],
+    ['L', 'L', 'L', 'L', '.', 'L', 'L', '.', 'L', 'L'],
+    ['L', '.', 'L', 'L', '.', 'L', 'L', '.', 'L', 'L'],
+    ['L', '.', 'L', 'L', 'L', 'L', 'L', '.', 'L', 'L'],
+    ['.', '.', 'L', '.', 'L', '.', '.', '.', '.', '.'],
+    ['L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L'],
+    ['L', '.', 'L', 'L', 'L', 'L', 'L', 'L', '.', 'L'],
+    ['L', '.', 'L', 'L', 'L', 'L', 'L', '.', 'L', 'L'],
   ];
 
   describe(findOccupiedSeatsAtEquilibrium, () => {
@@ -34,7 +30,7 @@ describe('Seating System', () => {
       const result = findOccupiedSeatsAtEquilibrium(testInput, true, 5);
       expect(result).toEqual(26);
     });
-  
+
     it('finds the answer for the part 1 puzzle input', () => {
       const result = findOccupiedSeatsAtEquilibrium(input, false, 4);
       console.log(result);
@@ -45,43 +41,42 @@ describe('Seating System', () => {
       const result = findOccupiedSeatsAtEquilibrium(input, true, 5);
       console.log(result);
       expect(result).not.toEqual(0);
-    })
+    });
   });
 
   describe(findAdjacentOccupiedSeatsStrict, () => {
     const allEight = [
-      ['.','.','.','.','.','.','.','#','.'],
-      ['.','.','.','#','.','.','.','.','.'],
-      ['.','#','.','.','.','.','.','.','.'],
-      ['.','.','.','.','.','.','.','.','.'],
-      ['.','.','#','L','.','.','.','.','#'],
-      ['.','.','.','.','#','.','.','.','.'],
-      ['.','.','.','.','.','.','.','.','.'],
-      ['#','.','.','.','.','.','.','.','.'],
-      ['.','.','.','#','.','.','.','.','.'],
+      ['.', '.', '.', '.', '.', '.', '.', '#', '.'],
+      ['.', '.', '.', '#', '.', '.', '.', '.', '.'],
+      ['.', '#', '.', '.', '.', '.', '.', '.', '.'],
+      ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+      ['.', '.', '#', 'L', '.', '.', '.', '.', '#'],
+      ['.', '.', '.', '.', '#', '.', '.', '.', '.'],
+      ['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+      ['#', '.', '.', '.', '.', '.', '.', '.', '.'],
+      ['.', '.', '.', '#', '.', '.', '.', '.', '.'],
     ];
 
     const blockedSeat = [
-      ['.','.','.','.','.','.','.','.','.','.','.','.','.'],
-      ['.','L','.','L','.','#','.','#','.','#','.','#','.'],
-      ['.','.','.','.','.','.','.','.','.','.','.','.','.'],
+      ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
+      ['.', 'L', '.', 'L', '.', '#', '.', '#', '.', '#', '.', '#', '.'],
+      ['.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.'],
     ];
 
     const noOccupiedSeats = [
-      ['.','#','#','.','#','#','.'],
-      ['#','.','#','.','#','.','#'],
-      ['#','#','.','.','.','#','#'],
-      ['.','.','.','L','.','.','.'],
-      ['#','#','.','.','.','#','#'],
-      ['#','.','#','.','#','.','#'],
-      ['.','#','#','.','#','#','.'],
+      ['.', '#', '#', '.', '#', '#', '.'],
+      ['#', '.', '#', '.', '#', '.', '#'],
+      ['#', '#', '.', '.', '.', '#', '#'],
+      ['.', '.', '.', 'L', '.', '.', '.'],
+      ['#', '#', '.', '.', '.', '#', '#'],
+      ['#', '.', '#', '.', '#', '.', '#'],
+      ['.', '#', '#', '.', '#', '#', '.'],
     ];
-    
+
     it('finds the number of occupied seats it can see', () => {
       expect(findAdjacentOccupiedSeatsStrict(allEight, 4, 3)).toEqual(8);
       expect(findAdjacentOccupiedSeatsStrict(blockedSeat, 1, 1)).toEqual(0);
       expect(findAdjacentOccupiedSeatsStrict(noOccupiedSeats, 3, 3)).toEqual(0);
     });
   });
-
-})
+});

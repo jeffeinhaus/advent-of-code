@@ -1,14 +1,11 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-export const fileToNumArray = (directory: string, fileName: string): number[] => {
-  return readFileLineByLine(directory, fileName)
-    .map((line) => Number(line));
-}
+export const fileToNumArray = (directory: string, fileName: string): number[] =>
+  readFileLineByLine(directory, fileName).map((line) => Number(line));
 
-export const fileToStringArray = (directory: string, fileName: string): string[] => {
-  return readFileLineByLine(directory, fileName);
-}
+export const fileToStringArray = (directory: string, fileName: string): string[] =>
+  readFileLineByLine(directory, fileName);
 
 export const fileTo2DArray = (directory: string, fileName: string): string[][] => {
   const lines = readFileLineByLine(directory, fileName);
@@ -23,7 +20,5 @@ export const fileTo2DArray = (directory: string, fileName: string): string[][] =
   return lines2D;
 };
 
-const readFileLineByLine = (directory: string, fileName: string): string[] => {
-  return readFileSync(resolve(directory, fileName), 'utf-8')
-    .split('\n');
-}
+const readFileLineByLine = (directory: string, fileName: string): string[] =>
+  readFileSync(resolve(directory, fileName), 'utf-8').split('\n');

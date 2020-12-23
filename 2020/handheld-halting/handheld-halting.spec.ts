@@ -2,7 +2,6 @@ import { detectInfiniteLoop, fixBadInstruction } from './handheld-halting';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Handheld Halting', () => {
-
   let input: string[] = [];
   beforeAll(() => {
     input = fileToStringArray(__dirname, 'puzzle_input.txt');
@@ -25,7 +24,7 @@ describe('Handheld Halting', () => {
       const result = detectInfiniteLoop(testInput);
       expect(result[0]).toEqual(5);
     });
-  
+
     it('finds the answer for the puzzle input', () => {
       const result = detectInfiniteLoop(input);
       console.log(result);

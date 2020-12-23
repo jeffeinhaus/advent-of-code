@@ -1,8 +1,14 @@
-import { passportProcessing, hasValidDateInRange, hasValidHeight, hasValidHairColor, hasValidEyeColor, hasValidPassportId } from './passport-processing';
+import {
+  hasValidDateInRange,
+  hasValidEyeColor,
+  hasValidHairColor,
+  hasValidHeight,
+  hasValidPassportId,
+  passportProcessing,
+} from './passport-processing';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Passport Processing', () => {
-
   let input: string[] = [];
   beforeAll(() => {
     input = fileToStringArray(__dirname, 'puzzle_input.txt');
@@ -14,7 +20,7 @@ describe('Passport Processing', () => {
     '',
     'iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884',
     'hcl:#cfa07d byr:1929',
-    '',  
+    '',
     'hcl:#ae17e1 iyr:2013',
     'eyr:2024',
     'ecl:brn pid:760753108 byr:1931',
@@ -30,7 +36,7 @@ describe('Passport Processing', () => {
       const result = passportProcessing(testInput);
       expect(result[0]).toEqual(2);
     });
-  
+
     it('finds the answer for the puzzle input', () => {
       const result = passportProcessing(input);
       console.log(result);
@@ -110,8 +116,7 @@ describe('Passport Processing', () => {
       it('validates passport id', () => {
         expect(hasValidPassportId('pid:000000001')).toEqual(true);
         expect(hasValidPassportId('pid:0123456789')).toEqual(false);
-      })
-
+      });
     });
   });
 });

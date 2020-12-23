@@ -1,8 +1,7 @@
-import { findBagsThatCanContainShinyGold, findBagsContainedByShinyGold } from './handy-haversacks';
+import { findBagsContainedByShinyGold, findBagsThatCanContainShinyGold } from './handy-haversacks';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Handy Haversacks', () => {
-
   let input: string[] = [];
   beforeAll(() => {
     input = fileToStringArray(__dirname, 'puzzle_input.txt');
@@ -28,14 +27,14 @@ describe('Handy Haversacks', () => {
     'dark green bags contain 2 dark blue bags.',
     'dark blue bags contain 2 dark violet bags.',
     'dark violet bags contain no other bags.',
-  ]
+  ];
 
   describe(findBagsThatCanContainShinyGold, () => {
     it('finds the number of bags that can contain a shiny gold bag', () => {
       const result = findBagsThatCanContainShinyGold(testInput);
       expect(result).toEqual(4);
     });
-  
+
     it('finds the answer for the puzzle input', () => {
       const result = findBagsThatCanContainShinyGold(input);
       console.log(result);
@@ -48,12 +47,11 @@ describe('Handy Haversacks', () => {
       expect(findBagsContainedByShinyGold(testInput)).toEqual(32);
       expect(findBagsContainedByShinyGold(testInput2)).toEqual(126);
     });
-  
+
     it('finds the answer for the puzzle input', () => {
       const result = findBagsContainedByShinyGold(input);
       console.log(result);
       expect(result).not.toEqual(0);
     });
   });
-
 });

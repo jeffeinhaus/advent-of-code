@@ -1,11 +1,11 @@
 type Bag = {
-  name: string,
-  total: number,
+  name: string;
+  total: number;
 };
 
 export const findBagsThatCanContainShinyGold = (rules: string[]): number => {
   const rulesDictionary = createCanBeContainedByRulesDictionary(rules);
-  
+
   const canContainShinyGold = [...rulesDictionary['shiny gold']];
   let numAdded = 0;
   do {
@@ -17,11 +17,11 @@ export const findBagsThatCanContainShinyGold = (rules: string[]): number => {
             canContainShinyGold.push(bag);
             numAdded++;
           }
-        })
+        });
       }
     });
-  } while (numAdded != 0);
-  
+  } while (numAdded !== 0);
+
   return canContainShinyGold.length;
 };
 
@@ -31,13 +31,13 @@ export const findBagsContainedByShinyGold = (rules: string[]): number => {
   let count = bagQueue.length;
   while (bagQueue.length > 0) {
     const bag = bagQueue.shift();
-    const bagsToAdd = getBagsFromRule(rulesDictionary[bag!])
+    const bagsToAdd = getBagsFromRule(rulesDictionary[bag!]);
     bagQueue = bagQueue.concat(bagsToAdd);
     count += bagsToAdd.length;
   }
 
   return count;
-}
+};
 
 const getBagsFromRule = (bags: Bag[]): string[] => {
   let bagQueue: string[] = [];
@@ -45,7 +45,7 @@ const getBagsFromRule = (bags: Bag[]): string[] => {
     bagQueue = bagQueue.concat(Array(bag.total).fill(bag.name));
   });
   return bagQueue;
-}
+};
 
 const createCanBeContainedByRulesDictionary = (rules: string[]): Record<string, string[]> => {
   const rulesDictionary: Record<string, string[]> = {};
@@ -73,7 +73,9 @@ const createContainsRulesDictionary = (rules: string[]): Record<string, Bag[]> =
     const containables = containable.replace('.', '').split(',');
     containables.forEach((containable) => {
       const name = containable.split(' ').slice(2, 4).join(' ');
-      const total = isNaN(Number(containable.split(' ')[1])) ? 0 : Number(containable.split(' ')[1]);
+      const total = isNaN(Number(containable.split(' ')[1]))
+        ? 0
+        : Number(containable.split(' ')[1]);
       const containingBag = bag.replace(' bags', '').trim();
       const insideBag: Bag = {
         name,
@@ -88,4 +90,4 @@ const createContainsRulesDictionary = (rules: string[]): Record<string, Bag[]> =
   });
 
   return rulesDictionary;
-}
+};

@@ -1,6 +1,7 @@
 export const calculateManhattanDistance = (directions: string[]): number => {
-  let x: number = 0, y: number = 0;
-  let currentDirection: number = 0;
+  let x = 0;
+  let y = 0;
+  let currentDirection = 0;
   directions.forEach((direction) => {
     const value = Number(direction.substring(1));
     if (direction.charAt(0) === 'N') {
@@ -12,7 +13,7 @@ export const calculateManhattanDistance = (directions: string[]): number => {
     } else if (direction.charAt(0) === 'W') {
       x -= value;
     } else if (direction.charAt(0) === 'L') {
-      if (currentDirection - value >= 0) { 
+      if (currentDirection - value >= 0) {
         currentDirection -= value;
       } else {
         currentDirection = 360 - Math.abs(currentDirection - value);
@@ -23,7 +24,7 @@ export const calculateManhattanDistance = (directions: string[]): number => {
       } else {
         currentDirection = (currentDirection + value) % 360;
       }
-   } else if (direction.charAt(0) === 'F') {
+    } else if (direction.charAt(0) === 'F') {
       if (currentDirection === 0) {
         x += value;
       } else if (currentDirection === 180) {

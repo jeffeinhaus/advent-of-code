@@ -1,26 +1,13 @@
-import { adapterArray, findAllPossibleArrays } from './adapter-array'
+import { adapterArray, findAllPossibleArrays } from './adapter-array';
 import { fileToNumArray } from '@utils/file-reader';
 
 describe('Adapter Array', () => {
-  
   let input: number[] = [];
   beforeAll(() => {
     input = fileToNumArray(__dirname, 'puzzle_input.txt');
   });
 
-  const testInput = [
-    16,
-    10,
-    15,
-    5,
-    1,
-    11,
-    7,
-    19,
-    6,
-    12,
-    4,
-  ];
+  const testInput = [16, 10, 15, 5, 1, 11, 7, 19, 6, 12, 4];
 
   const testInput2 = [
     28,
@@ -58,10 +45,10 @@ describe('Adapter Array', () => {
 
   describe(adapterArray, () => {
     it('finds the number of 1-jolt differences multiplied by the number of 3-jolt differences', () => {
-      expect(adapterArray(testInput)).toEqual(7*5);
-      expect(adapterArray(testInput2)).toEqual(22*10);
+      expect(adapterArray(testInput)).toEqual(7 * 5);
+      expect(adapterArray(testInput2)).toEqual(22 * 10);
     });
-  
+
     it('finds the answer for the puzzle input', () => {
       const result = adapterArray(input);
       console.log(result);
@@ -81,5 +68,4 @@ describe('Adapter Array', () => {
       expect(result).not.toEqual(0);
     });
   });
-
 });

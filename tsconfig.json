@@ -12,7 +12,7 @@
     "paths": {
       "@utils/*":["utils/*"]
     },
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "target": "ES2020"
   },
   "exclude": [

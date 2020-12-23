@@ -9,7 +9,7 @@ export const customCustomsLoose = (forms: string[]): number => {
       currentForm = '';
     }
   });
-  
+
   return sum;
 };
 
@@ -30,8 +30,6 @@ export const customCustomsStrict = (forms: string[]): number => {
       rowCount = 0;
     }
   });
-  
+
   return sum;
 };
-
-
