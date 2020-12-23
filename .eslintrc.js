@@ -10,7 +10,11 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
-  extends: ['plugin:@typescript-eslint/recommended'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+  ],
   ignorePatterns: ['node_modules', 'dist'],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -44,7 +48,7 @@ module.exports = {
         beforeLineComment: true,
       },
     ],
-    'lines-between-class-members': 'error',
+    'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
     'max-len': [
       'error',
       {
@@ -90,7 +94,6 @@ module.exports = {
     semi: 'error',
     'semi-style': 'error',
     'space-before-blocks': 'error',
-    'space-before-function-paren': 'error',
     'space-in-parens': 'error',
     'space-infix-ops': 'error',
     'space-unary-ops': 'error',

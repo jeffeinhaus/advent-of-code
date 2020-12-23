@@ -133,7 +133,7 @@ export class Tile {
     bottom: Set<number>;
   };
 
-  constructor (id: number, tile: string[]) {
+  constructor(id: number, tile: string[]) {
     this.id = id;
     this.tile = tile;
     this.tileMap = {

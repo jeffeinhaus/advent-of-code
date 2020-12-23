@@ -1,4 +1,4 @@
-import { climbStairs, findBasement } from './not-quite-lisp';
+import { climbStairs, findBasement } from '.';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Not Quite Lisp', () => {
