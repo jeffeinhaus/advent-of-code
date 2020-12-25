@@ -14,6 +14,15 @@ export class Dimensions {
 
   calculateAreaSmallestSide = (): number =>
     Math.min(this.length * this.width, this.width * this.height, this.height * this.length);
+
+  calculateSmallestPerimeter = (): number =>
+    Math.min(
+      this.length * 2 + this.width * 2,
+      this.length * 2 + this.height * 2,
+      this.width * 2 + this.height * 2,
+    );
+
+  calculateVolume = (): number => this.length * this.width * this.height;
 }
 
 export const convertToDimensions = (dimensions: string): Dimensions => {
@@ -26,7 +35,19 @@ export const convertToDimensions = (dimensions: string): Dimensions => {
 };
 
 export const calculateTotalWrappingPaper = (dimensions: string[]): number =>
+  solver(
+    dimensions,
+    (dimension) => dimension.calculateSurfaceArea() + dimension.calculateAreaSmallestSide(),
+  );
+
+export const calculateTotalRibbon = (dimensions: string[]): number =>
+  solver(
+    dimensions,
+    (dimension) => dimension.calculateSmallestPerimeter() + dimension.calculateVolume(),
+  );
+
+const solver = (dimensions: string[], sumFunction: (dimension: Dimensions) => number) =>
   dimensions
     .map((dimension) => convertToDimensions(dimension))
-    .map((dimension) => dimension.calculateSurfaceArea() + dimension.calculateAreaSmallestSide())
-    .reduce((totalWrappingPaper, area) => totalWrappingPaper + area);
+    .map(sumFunction)
+    .reduce((total, current) => total + current);
