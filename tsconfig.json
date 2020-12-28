@@ -10,6 +10,7 @@
     "noImplicitReturns": true,
     "outDir": "dist",
     "paths": {
+      "@types":["types.ts"],
       "@utils/*":["utils/*"]
     },
     "strictNullChecks": false,

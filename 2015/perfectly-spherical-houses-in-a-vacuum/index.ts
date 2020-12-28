@@ -1,7 +1,4 @@
-type Position = {
-  x: number;
-  y: number;
-};
+import { Position } from '@types';
 
 export const splitStringEveryOther = (toSplit: string): [string, string] => {
   let first = '';
