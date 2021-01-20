@@ -15,8 +15,9 @@ const createConfig = (directory) => ({
 
 const twentyFifteen = createConfig('2015/');
 const twentyTwenty = createConfig('2020/');
+const crackingTheCodingInterview = createConfig('cracking-the-coding-interview/');
 
 module.exports = {
   collectCoverage: true,
-  projects: [twentyFifteen, twentyTwenty],
+  projects: [twentyFifteen, twentyTwenty, crackingTheCodingInterview],
 };
