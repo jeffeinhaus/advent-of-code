@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --ext .tsx,.ts . --fix",
-    "test": "concurrently -p '·{name}·' -n UNIT,LINT -c cyan.inverse,magenta.inverse 'jest' 'npm:lint'"
+    "test": "concurrently -p '·{name}·' -n UNIT,LINT -c cyan.inverse,magenta.inverse 'jest' 'npm:lint'",
+    "test:aoc:2015": "concurrently -p '·{name}·' -n UNIT,LINT -c cyan.inverse,magenta.inverse 'jest advent-of-code/2015' 'npm:lint'",
+    "test:aoc:2020": "concurrently -p '·{name}·' -n UNIT,LINT -c cyan.inverse,magenta.inverse 'jest advent-of-code/2020' 'npm:lint'",
+    "test:ctci": "concurrently -p '·{name}·' -n UNIT,LINT -c cyan.inverse,magenta.inverse 'jest cracking-the-coding-interview/' 'npm:lint'"
   },
   "repository": {
     "type": "git",

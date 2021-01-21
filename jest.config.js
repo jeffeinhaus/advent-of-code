@@ -13,8 +13,8 @@ const createConfig = (directory) => ({
   testEnvironment: 'node',
 });
 
-const twentyFifteen = createConfig('2015/');
-const twentyTwenty = createConfig('2020/');
+const twentyFifteen = createConfig('advent-of-code/2015/');
+const twentyTwenty = createConfig('advent-of-code/2020/');
 const crackingTheCodingInterview = createConfig('cracking-the-coding-interview/');
 
 module.exports = {
