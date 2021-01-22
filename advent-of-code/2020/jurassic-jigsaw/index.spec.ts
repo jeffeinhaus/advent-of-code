@@ -1,29 +1,18 @@
-import {
-  Tile,
-  convertToTileArray,
-  findCornerTiles,
-  flipHorizontal,
-  flipVertical,
-  rotate,
-} from './jurassic-jigsaw';
+import { Tile, convertToTileArray, findCornerTiles, flipHorizontal, flipVertical, rotate } from '.';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Jurassic Jigsaw', () => {
-  let exampleInput: string[] = [];
-  let puzzleInput: string[] = [];
-  beforeAll(() => {
-    exampleInput = fileToStringArray(__dirname, 'example_input.txt');
-    puzzleInput = fileToStringArray(__dirname, 'puzzle_input.txt');
-  });
+  const puzzle = fileToStringArray(__dirname, 'input/puzzle.txt');
+  const example = fileToStringArray(__dirname, 'input/example.txt');
 
   describe(findCornerTiles, () => {
-    it.only('multiplies the ids of all the corner tiles after rearranging', () => {
-      const tiles = convertToTileArray(exampleInput);
+    it('multiplies the ids of all the corner tiles after rearranging', () => {
+      const tiles = convertToTileArray(example);
       expect(findCornerTiles(tiles)).toEqual(20899048083289);
     });
 
-    it('finds the answer to the puzzle input', () => {
-      const tiles = convertToTileArray(puzzleInput);
+    it.skip('finds the answer to the puzzle input', () => {
+      const tiles = convertToTileArray(puzzle);
       expect(findCornerTiles(tiles)).toEqual(108603771107737);
     });
   });
@@ -31,7 +20,7 @@ describe('Jurassic Jigsaw', () => {
   describe(convertToTileArray, () => {
     let result: Tile[];
     beforeEach(() => {
-      result = convertToTileArray(exampleInput);
+      result = convertToTileArray(example);
     });
 
     it('returns an array of tiles with ids', () => {
@@ -161,7 +150,7 @@ describe('Jurassic Jigsaw', () => {
   describe('Match tiles', () => {
     let tiles: Tile[];
     beforeEach(() => {
-      tiles = convertToTileArray(exampleInput);
+      tiles = convertToTileArray(example);
     });
 
     describe('Match left', () => {
@@ -209,7 +198,7 @@ describe('Jurassic Jigsaw', () => {
   describe('Rotate tile', () => {
     let tiles: Tile[];
     beforeEach(() => {
-      tiles = convertToTileArray(exampleInput);
+      tiles = convertToTileArray(example);
     });
 
     it('rotates the tile 90 degrees to the right', () => {
@@ -231,7 +220,7 @@ describe('Jurassic Jigsaw', () => {
   describe('Flip tile vertical', () => {
     let tiles: Tile[];
     beforeEach(() => {
-      tiles = convertToTileArray(exampleInput);
+      tiles = convertToTileArray(example);
     });
 
     it('flips the tile upside down', () => {
@@ -253,7 +242,7 @@ describe('Jurassic Jigsaw', () => {
   describe('Flip tile horizontal', () => {
     let tiles: Tile[];
     beforeEach(() => {
-      tiles = convertToTileArray(exampleInput);
+      tiles = convertToTileArray(example);
     });
 
     it('flips the tile horizontally', () => {

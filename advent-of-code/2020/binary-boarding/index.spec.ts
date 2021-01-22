@@ -1,11 +1,8 @@
-import { computeSeatId, findMySeat, maxSeatId } from './binary-boarding';
+import { computeSeatId, findMySeat, maxSeatId } from '.';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Binary Boarding', () => {
-  let input: string[] = [];
-  beforeAll(() => {
-    input = fileToStringArray(__dirname, 'puzzle_input.txt');
-  });
+  const puzzle = fileToStringArray(__dirname, 'input/puzzle.txt');
 
   it('computes the seat id by finding the row, multiplying by 8, then adding the column', () => {
     expect(computeSeatId('FBFBBFFRLR')).toEqual(357);
@@ -15,14 +12,10 @@ describe('Binary Boarding', () => {
   });
 
   it('computes the highest seat ID for the puzzle input', () => {
-    const result = maxSeatId(input);
-    console.log(result);
-    expect(result).not.toEqual(0);
+    expect(maxSeatId(puzzle)).toEqual(848);
   });
 
   it('finds my seat for the puzzle input', () => {
-    const result = findMySeat(input);
-    console.log(result);
-    expect(result).not.toEqual(0);
+    expect(findMySeat(puzzle)).toEqual(682);
   });
 });

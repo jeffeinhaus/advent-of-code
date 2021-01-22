@@ -1,24 +1,17 @@
-import { findBus, findMagicBus } from './shuttle-search';
+import { findBus, findMagicBus } from '.';
 import { fileToStringArray } from '@utils/file-reader';
 
 describe('Shuttle Search', () => {
-  let input: string[] = [];
-  beforeAll(() => {
-    input = fileToStringArray(__dirname, 'puzzle_input.txt');
-  });
-
-  const testInput = ['939', '7,13,x,x,59,x,31,19'];
+  const puzzle = fileToStringArray(__dirname, 'input/puzzle.txt');
+  const example = fileToStringArray(__dirname, 'input/example.txt');
 
   describe(findBus, () => {
     it('finds the bus id of the earliest bus multiplied by the number of minutes you have to wait', () => {
-      const result = findBus(testInput);
-      expect(result).toEqual(295);
+      expect(findBus(example)).toEqual(295);
     });
 
     it('finds the answer for the part 1 puzzle input', () => {
-      const result = findBus(input);
-      console.log(result);
-      expect(result).not.toEqual(0);
+      expect(findBus(puzzle)).toEqual(4207);
     });
   });
 
@@ -31,13 +24,5 @@ describe('Shuttle Search', () => {
       expect(findMagicBus('67,7,x,59,61')).toEqual(1261476);
       expect(findMagicBus('1789,37,47,1889')).toEqual(1202161486);
     });
-
-    /*
-     * it('finds the answer to the puzzle input', () => {
-     *   const result = findMagicBus(input[1]);
-     *   console.log(result);
-     *   expect(result).not.toEqual(0);
-     * });
-     */
   });
 });

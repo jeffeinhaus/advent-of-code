@@ -74,7 +74,6 @@ export const findCornerTiles = (tiles: Tile[]): number => {
   tiles.forEach((tile) => {
     if (isCorner(tile)) {
       corners.push(tile.id);
-      console.log([tile.id, tile.tileMap]);
     }
   });
 
